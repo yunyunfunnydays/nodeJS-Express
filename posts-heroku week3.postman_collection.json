@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "127ca5b4-5c32-4333-9d9b-b859b63f8adb",
+		"name": "posts-heroku week3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20580181"
+	},
+	"item": [
+		{
+			"name": "取得所有房型",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"tranquil-ravine-45680",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增一筆房型",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\":\"abc\",\r\n    \"tags\":[\"開心\",\"有趣\"],\r\n    \"type\":\"person\",\r\n    \"name\":\"John\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"tranquil-ravine-45680",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除所有房型",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"tranquil-ravine-45680",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除單筆房型",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts/629379192e73b3c31aec5b48",
+					"protocol": "https",
+					"host": [
+						"tranquil-ravine-45680",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"629379192e73b3c31aec5b48"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改單筆待辦",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\":\"dog2\",\r\n    \"tags\":[\"開心\",\"有趣\"],\r\n    \"type\":\"person\",\r\n    \"name\":\"John\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts/629379192e73b3c31aec5b48",
+					"protocol": "https",
+					"host": [
+						"tranquil-ravine-45680",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"629379192e73b3c31aec5b48"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
