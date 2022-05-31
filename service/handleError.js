@@ -1,5 +1,4 @@
 const handleError = (res, err) => {
-  console.log('234');
   let message = '';
   if (err) {
     message = err.message;
