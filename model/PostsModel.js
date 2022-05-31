@@ -17,9 +17,10 @@ const postsSchema = new mongoose.Schema(
       enum: ['group', 'person'],
       required: [true, '貼文類型 type 未填寫'],
     },
-    name: {
-      type: String,
-      required: [true, 'Name 未填寫'],
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'user',
+      required: [true, 'user ID 未填寫'],
     },
     image: {
       type: String,
@@ -41,6 +42,6 @@ const postsSchema = new mongoose.Schema(
   },
 );
 
-const postsModel = mongoose.model('posts', postsSchema);
+const PostsModel = mongoose.model('posts', postsSchema);
 
-module.exports = postsModel;
+module.exports = PostsModel;

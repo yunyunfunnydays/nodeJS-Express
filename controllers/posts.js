@@ -1,10 +1,18 @@
-const PostsModel = require('../model/post');
+const PostsModel = require('../model/PostsModel');
+const UsersModel = require('../model/UsersModel');
 const handleSuccess = require('../service/handleSuccess');
 const handleError = require('../service/handleError');
 
 const postsControllers = {
   async getPosts(req, res) {
-    const allPosts = await PostsModel.find();
+    const timeSort = req.query.timeSort === 'asc' ? 'createdAt' : '-createdAt';
+    const q = req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
+    const allPosts = await PostsModel.find(q).populate({
+      path: 'user',
+      select: 'name photo',
+    }).sort(timeSort);
+    // asc 遞增(由小到大，由舊到新) createdAt ;
+    // desc 遞減(由大到小、由新到舊) "-createdAt"
     handleSuccess(res, allPosts);
   },
   async createPosts(req, res) {
@@ -15,7 +23,7 @@ const postsControllers = {
       } else {
         const newPost = await PostsModel.create(
           {
-            name: body.name,
+            user: body.user,
             content: body.content,
             tags: body.tas,
             type: body.type,
@@ -37,7 +45,7 @@ const postsControllers = {
         const editPost = await PostsModel.findByIdAndUpdate(
           id,
           {
-            name: body.name,
+            user: body.user,
             content: body.content,
             tags: body.tas,
             type: body.type,
