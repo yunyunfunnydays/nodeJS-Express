@@ -1,7 +1,7 @@
 const PostsModel = require('../model/PostsModel');
 const UsersModel = require('../model/UsersModel');
 const handleSuccess = require('../service/handleSuccess');
-const handleError = require('../service/handleError');
+const appError = require('../service/appError');
 
 const postsControllers = {
   async getPosts(req, res) {
@@ -15,62 +15,58 @@ const postsControllers = {
     // desc 遞減(由大到小、由新到舊) "-createdAt"
     handleSuccess(res, allPosts);
   },
-  async createPosts(req, res) {
-    try {
-      const { body } = req;
-      if (!body.content) {
-        handleError(res);
-      } else {
-        const newPost = await PostsModel.create(
-          {
-            user: body.user,
-            content: body.content,
-            tags: body.tas,
-            type: body.type,
-          },
-        );
-        handleSuccess(res, newPost);
-      }
-    } catch (err) {
-      handleError(res, err.message);
+  async createPosts(req, res, next) {
+    const { body } = req;
+    if (!body.content) {
+      appError(400, '未有填寫 content 資料', next);
+    } else {
+      const newPost = await PostsModel.create(
+        {
+          user: body.user,
+          content: body.content,
+          tags: body.tas,
+          type: body.type,
+        },
+      );
+      handleSuccess(res, newPost);
     }
   },
-  async patchPosts(req, res) {
+  async patchPosts(req, res, next) {
     const { id } = req.params;
     const { body } = req;
-    try {
-      if (!body.content) {
-        handleError(res);
+    if (!body.content) {
+      appError(400, '未有填寫 content 資料', next);
+    } else {
+      const editPost = await PostsModel.findByIdAndUpdate(
+        id,
+        {
+          user: body.user,
+          content: body.content,
+          tags: body.tas,
+          type: body.type,
+        },
+        {
+          returnDocument: 'after',
+        },
+      );
+      if (!editPost) {
+        appError(400, '未有對應的id', next);
       } else {
-        const editPost = await PostsModel.findByIdAndUpdate(
-          id,
-          {
-            user: body.user,
-            content: body.content,
-            tags: body.tas,
-            type: body.type,
-          },
-          {
-            returnDocument: 'after',
-          },
-        );
         handleSuccess(res, editPost);
       }
-    } catch (err) {
-      handleError(res, err);
     }
   },
-  async deleteAll(req, res) {
+  async deleteAll(req, res, next) {
     const deletePosts = await PostsModel.deleteMany({});
     handleSuccess(res, deletePosts);
   },
-  async deleteById(req, res) {
+  async deleteById(req, res, next) {
     const { id } = req.params;
-    try {
-      const deletePost = await PostsModel.findByIdAndUpdate(id);
+    const deletePost = await PostsModel.findByIdAndUpdate(id);
+    if (!deletePost) {
+      appError(400, '未有對應的id', next);
+    } else {
       handleSuccess(res, deletePost);
-    } catch (err) {
-      handleError(res, err);
     }
   },
 };

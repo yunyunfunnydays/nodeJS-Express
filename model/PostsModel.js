@@ -40,6 +40,9 @@ const postsSchema = new mongoose.Schema(
       default: 0,
     },
   },
+  {
+    versionKey: false,
+  },
 );
 
 const PostsModel = mongoose.model('posts', postsSchema);

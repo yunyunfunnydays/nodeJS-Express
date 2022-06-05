@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "nodemon ./bin/wwwS"
+    "start:dev": "cross-env NODE_ENV=dev nodemon ./bin/www",
+    "start:production": "cross-env NODE_ENV=production nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
