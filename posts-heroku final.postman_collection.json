@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "127ca5b4-5c32-4333-9d9b-b859b63f8adb",
-		"name": "posts-heroku week3",
+		"_postman_id": "b52e92c7-9138-4ee3-8539-ba0dda8af588",
+		"name": "posts-heroku final",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20580181"
 	},
@@ -10,9 +10,15 @@
 			"name": "取得所有房型",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNkMDY5YzVmMjE5NWFmZjE5ZGNkYSIsIm5hbWUiOiJhYmJ5IiwiaWF0IjoxNjU0NDQ0MTYxLCJleHAiOjE2NTUwNDg5NjF9.wWpcbtZyoRSLfs8-YjlLqWO9hbnxiWoRwTw4nPpwYbc",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts",
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts/?timeSort=asc&q=b",
 					"protocol": "https",
 					"host": [
 						"tranquil-ravine-45680",
@@ -20,7 +26,18 @@
 						"com"
 					],
 					"path": [
-						"posts"
+						"posts",
+						""
+					],
+					"query": [
+						{
+							"key": "timeSort",
+							"value": "asc"
+						},
+						{
+							"key": "q",
+							"value": "b"
+						}
 					]
 				}
 			},
@@ -30,10 +47,16 @@
 			"name": "新增一筆房型",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNkMDY5YzVmMjE5NWFmZjE5ZGNkYSIsIm5hbWUiOiJhYmJ5IiwiaWF0IjoxNjU0NDQ0MTYxLCJleHAiOjE2NTUwNDg5NjF9.wWpcbtZyoRSLfs8-YjlLqWO9hbnxiWoRwTw4nPpwYbc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"content\":\"abc\",\r\n    \"tags\":[\"開心\",\"有趣\"],\r\n    \"type\":\"person\",\r\n    \"name\":\"John\"\r\n}",
+					"raw": "{\r\n    \"content\":\"abc\",\r\n    \"tags\":[\"開心\",\"有趣\"],\r\n    \"type\":\"person\",\r\n    \"user\":\"62960e5b1da2713c67fc6859\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,7 +82,13 @@
 			"name": "刪除所有房型",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNkMDY5YzVmMjE5NWFmZjE5ZGNkYSIsIm5hbWUiOiJhYmJ5IiwiaWF0IjoxNjU0NDQ0MTYxLCJleHAiOjE2NTUwNDg5NjF9.wWpcbtZyoRSLfs8-YjlLqWO9hbnxiWoRwTw4nPpwYbc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -87,8 +116,14 @@
 		{
 			"name": "刪除單筆房型",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNkMDY5YzVmMjE5NWFmZjE5ZGNkYSIsIm5hbWUiOiJhYmJ5IiwiaWF0IjoxNjU0NDQ0MTYxLCJleHAiOjE2NTUwNDg5NjF9.wWpcbtZyoRSLfs8-YjlLqWO9hbnxiWoRwTw4nPpwYbc",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "https://tranquil-ravine-45680.herokuapp.com/posts/629379192e73b3c31aec5b48",
 					"protocol": "https",
@@ -109,7 +144,13 @@
 			"name": "修改單筆待辦",
 			"request": {
 				"method": "PATCH",
-				"header": [],
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNkMDY5YzVmMjE5NWFmZjE5ZGNkYSIsIm5hbWUiOiJhYmJ5IiwiaWF0IjoxNjU0NDQ0MTYxLCJleHAiOjE2NTUwNDg5NjF9.wWpcbtZyoRSLfs8-YjlLqWO9hbnxiWoRwTw4nPpwYbc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"content\":\"dog2\",\r\n    \"tags\":[\"開心\",\"有趣\"],\r\n    \"type\":\"person\",\r\n    \"name\":\"John\"\r\n}",

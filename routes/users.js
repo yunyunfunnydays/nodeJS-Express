@@ -1,10 +1,14 @@
 const express = require('express');
+const handleErrorAsync = require('../service/handleErrorAsync');
+const usersControllers = require('../controllers/users');
+const { isAuth } = require('../service/auth');
 
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
+router.post('/sign_up', handleErrorAsync(usersControllers.signUp));
+router.post('/sign_in', handleErrorAsync(usersControllers.signIn));
+router.get('/profile', isAuth, handleErrorAsync(usersControllers.getProfile));
+router.post('/updatePassword', isAuth, handleErrorAsync(usersControllers.updatePassword));
 module.exports = router;
