@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "取得所有房型",
+			"name": "取得所有貼文",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -44,7 +44,7 @@
 			"response": []
 		},
 		{
-			"name": "新增一筆房型",
+			"name": "新增一筆貼文",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -79,7 +79,7 @@
 			"response": []
 		},
 		{
-			"name": "刪除所有房型",
+			"name": "刪除所有貼文",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -114,7 +114,7 @@
 			"response": []
 		},
 		{
-			"name": "刪除單筆房型",
+			"name": "刪除單筆貼文",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -141,7 +141,7 @@
 			"response": []
 		},
 		{
-			"name": "修改單筆待辦",
+			"name": "修改單筆貼文",
 			"request": {
 				"method": "PATCH",
 				"header": [

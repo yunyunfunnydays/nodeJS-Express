@@ -72,6 +72,14 @@ app.use((err, req, res, next) => {
     err.message = '資料欄位填寫錯誤，請重新輸入';
     err.isOperational = true;
   }
+  if (err.code === 11000) {
+    err.message = 'email已使用';
+    err.isOperational = true;
+  }
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    err.message = '請使用JSON格式';
+    err.isOperational = true;
+  }
   resErrorProd(err, res);
 });
 

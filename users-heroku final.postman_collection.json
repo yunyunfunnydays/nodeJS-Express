@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"abby\",\r\n    \"email\": \"adlsltd@gmail.com\",\r\n    \"appliedPassword\": \"ssdfsdgadfga\",\r\n    \"confirmPassword\": \"ssdfsdgadfga\"\r\n}",
+					"raw": "{\r\n    \"name\": \"abby\",\r\n    \"email\": \"adlsltd@gmail.com\",\r\n    \"appliedPassword\": \"ssdfsdgadfga\",\r\n    \"confirmPassword\": \"ssdfsdgadfga\",\r\n    \"sex\": \"female\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,6 +83,42 @@
 				"body": {
 					"mode": "raw",
 					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tranquil-ravine-45680.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"tranquil-ravine-45680",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改個人資料",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWNkMDY5YzVmMjE5NWFmZjE5ZGNkYSIsIm5hbWUiOiJhYmJ5IiwiaWF0IjoxNjU0NDQ0MTYxLCJleHAiOjE2NTUwNDg5NjF9.wWpcbtZyoRSLfs8-YjlLqWO9hbnxiWoRwTw4nPpwYbc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"abby\",\r\n    \"sex\": \"male\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
