@@ -6,7 +6,7 @@ const User = require('../model/UsersModel');
 const generateSendJWT = (user, statusCode, res) => {
   const token = jwt.sign(
     {
-      id: user._id,
+      id: user.id,
       name: user.name,
     },
     process.env.JWT_SECRET,
@@ -37,7 +37,7 @@ const isAuth = handleErrorAsync(async (req, res, next) => {
   const decoded = await new Promise((resolve, reject) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
       if (err) {
-        reject(err);
+        reject(appError(400, '認證失敗，請重新登入訊息', next));
       } else {
         resolve(payload);
       }

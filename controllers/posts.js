@@ -37,6 +37,10 @@ const postsControllers = {
     if (!body.content) {
       appError(400, '未有填寫 content 資料', next);
     } else {
+      const oriPost = await PostsModel.findById(id);
+      if (req.user.id !== oriPost.user.tostring) {
+        appError(400, '無編輯權限', next);
+      }
       const editPost = await PostsModel.findByIdAndUpdate(
         id,
         {
@@ -62,7 +66,11 @@ const postsControllers = {
   },
   async deleteById(req, res, next) {
     const { id } = req.params;
-    const deletePost = await PostsModel.findByIdAndUpdate(id);
+    const oriPost = await PostsModel.findById(id);
+    if (req.user.id !== oriPost.user.tostring) {
+      appError(400, '無刪除權限', next);
+    }
+    const deletePost = await PostsModel.findByIdAndDelete(id);
     if (!deletePost) {
       appError(400, '未有對應的id', next);
     } else {
